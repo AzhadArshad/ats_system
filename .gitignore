@@ -13,6 +13,10 @@ __pycache__/
 *.safetensors
 *.pkl
 
+# ml_models folder
+ml_models
+
+
 # Virtual environments
 .venv/
 venv/
