@@ -62,6 +62,16 @@ def with_fallback(
     log_fallback: bool = True,
     **kwargs
 ) -> Tuple[T, bool]:
+    """Utility to run a primary function with a fallback in case of failure.
+    Args:
+        primary_func (Callable[..., T]): The primary function to execute.
+        fallback_func (Callable[..., T]): The fallback function to execute if the primary fails.
+        *args: Positional arguments to pass to both functions.
+        log_fallback (bool): Whether to log when falling back. Defaults to True.
+        **kwargs: Keyword arguments to pass to both functions.
+    Returns:
+        Tuple[T, bool]: A tuple containing the result of the successful function and a boolean indicating if the fallback was used.
+    """
     # Remove error_category if passed by accident
     kwargs.pop('error_category', None)
     try:
