@@ -232,3 +232,11 @@ instructions (model upload, secrets, CORS, Supabase redirect URLs) are in **[DEP
 - **Grammar scoring** is currently a stub (reports "unavailable") — it has consumers but no
   engine yet. Candidate approaches: `language_tool_python` or a Groq grammar pass.
 - The skill-validation similarity threshold may warrant recalibration for the finetuned model.
+
+---
+
+## 🙏 Acknowledgments
+
+Heartfelt thanks to **[Apna College](https://www.apnacollege.in/)** for an amazing course and
+their excellent teaching. This project was built as part of that course — the lessons and
+guidance there made it possible. 💛
