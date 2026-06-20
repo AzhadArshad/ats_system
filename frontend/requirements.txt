@@ -1,0 +1,9 @@
+# Frontend-only dependencies (Streamlit Community Cloud).
+# Lives in frontend/ so Streamlit Cloud uses THIS file (not the heavy root
+# requirements.txt) when the main file is frontend/streamlit_app.py.
+# No system libraries needed — the frontend never imports torch/spaCy/WeasyPrint.
+
+streamlit>=1.32
+requests>=2.31
+supabase>=2.4
+python-dotenv>=1.0

@@ -1,0 +1,34 @@
+# Backend-only dependencies (FastAPI service). Used by the Docker image.
+# The root requirements.txt remains the combined backend+frontend set for local dev.
+#
+# System libraries still required at the OS level (provided by the Dockerfile):
+#   libmagic1, libcairo2, libpango-1.0-0, libpangoft2-1.0-0, libgdk-pixbuf-2.0-0, libffi
+# And after install:  python -m spacy download en_core_web_md
+
+# ── web framework ──
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.6
+python-multipart>=0.0.9
+python-dotenv>=1.0
+
+# ── NLP / ML ──
+spacy>=3.7,<4.0
+sentence-transformers>=2.5
+numpy>=1.26
+rapidfuzz>=3.6
+
+# ── file parsing ──
+pdfplumber>=0.11
+PyPDF2>=3.0
+python-docx>=1.1
+python-magic>=0.4.27
+
+# ── PDF report generation ──
+jinja2>=3.1
+weasyprint>=60.0
+
+# ── external services ──
+httpx>=0.27
+groq>=0.13
+PyJWT[crypto]>=2.8

@@ -1,0 +1,20 @@
+# Keep the backend build context small and fast.
+.git
+.venv
+venv
+__pycache__
+**/__pycache__
+*.pyc
+.DS_Store
+backend/logs
+backend/.env
+
+# Frontend is deployed separately (Streamlit Cloud) — not needed in the backend image
+frontend
+
+# The 438 MB model is pulled from the HF Hub at runtime, not baked into the image
+ml_models
+
+# Local/docs artifacts
+*.log
+DEPLOY.md

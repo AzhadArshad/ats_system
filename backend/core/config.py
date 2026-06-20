@@ -15,11 +15,18 @@ APP_TITLE='ATS RESUME ANALYZER API'
 APP_VERSION='1.0.0'
 APP_DESCRIPTION='analyse resumes against job description using nlp + ml'
 
+# Comma-separated allowed CORS origins. Defaults cover local dev (incl. Streamlit on 8501);
+# in production set ALLOWED_ORIGINS to your deployed frontend URL, e.g.
+#   ALLOWED_ORIGINS=https://your-app.streamlit.app
+_DEFAULT_ORIGINS = (
+    "http://localhost:3000,http://localhost:5173,"
+    "http://127.0.0.1:5173,http://localhost:8501"
+)
 ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173"
-]  
+    o.strip()
+    for o in os.getenv("ALLOWED_ORIGINS", _DEFAULT_ORIGINS).split(",")
+    if o.strip()
+]
 
 #file 
 MAX_FILE_SIZE_MB=5
