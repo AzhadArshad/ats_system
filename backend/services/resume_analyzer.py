@@ -65,11 +65,13 @@ def analyze_full_resume(
             nlp=nlp,
         )
 
-    from backend.utils.file_utils import (
-        get_default_grammar_results, get_default_location_results,
-    )
+    from backend.utils.file_utils import get_default_grammar_results
+    from backend.services.ats_scorer import detect_location_info
+
+    # Grammar checking has no engine yet — keep the "unavailable" stub.
     grammar_results  = get_default_grammar_results()
-    location_results = get_default_location_results()
+    # Location detection is implemented (spaCy NER + address/zip regex) — run it.
+    location_results = detect_location_info(resume_text, nlp)
 
     scores = calculate_overall_score(
         text=resume_text,

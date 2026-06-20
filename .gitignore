@@ -24,3 +24,6 @@ venv/
 # environment variables
 env/
 .env
+
+# Streamlit secrets — keep the .example template, ignore the real one
+.streamlit/secrets.toml

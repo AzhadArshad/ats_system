@@ -35,8 +35,15 @@ SUPPORTED_MIME_TYPES = {
 SUPPORTED_EXTENSIONS = {'.pdf', '.doc', '.docx'}
 
 SPACY_MODEL_PRIMARY="en_core_web_md" #better accuracy
-SPACY_MODEL_SECONDARY='"en_core_web_sm' 
-SENTENCE_TRANSFORMER_MODEL = os.getenv("SENTENCE_TRANSFORMER_MODEL", "all-MiniLM-L6-v2")
+SPACY_MODEL_SECONDARY="en_core_web_sm"
+
+# Prefer the locally finetuned BERT (all-mpnet-base-v2 finetuned on resume/JD pairs);
+# fall back to the hub MiniLM model if the local weights are absent (ml_models/ is gitignored).
+_FINETUNED_BERT = Path(__file__).resolve().parents[2] / "ml_models" / "finetuned-bert"
+SENTENCE_TRANSFORMER_MODEL = os.getenv(
+    "SENTENCE_TRANSFORMER_MODEL",
+    str(_FINETUNED_BERT) if _FINETUNED_BERT.exists() else "all-MiniLM-L6-v2",
+)
 
 # Score component weights — this is business logic treated as config
 SCORE_WEIGHTS = {
