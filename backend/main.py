@@ -62,6 +62,18 @@ app.add_middleware(
 
 app.include_router(router)
 
+@app.get('/')
+async def root():
+    """Root route — HF Spaces' readiness probe hits `/` and needs a 200 to mark
+    the Space 'Running'. Also a friendly landing pointing at the API docs."""
+    return {
+        'service': APP_TITLE,
+        'version': APP_VERSION,
+        'status':  'ok',
+        'docs':    '/docs',
+        'health':  '/api/v1/health',
+    }
+
 if __name__=='__main__':
     import uvicorn
     uvicorn.run(
